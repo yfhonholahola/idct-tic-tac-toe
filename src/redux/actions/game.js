@@ -2,8 +2,8 @@ import { CREATE_GAME, ON_MOVE, ON_MOVE_SUCCESS, END_GAME, EXIT_GAME, RESET_GAME,
 import io from 'socket.io-client'
 
 var socket = null;
-// const url = 'http://192.168.1.8:3090';
-const url = 'https://idct-tic-tac-toe-server.azurewebsites.net'
+const url = 'http://192.168.1.8:3090';
+//const url = 'https://idct-tic-tac-toe-server.azurewebsites.net'
 
 export const createGame = () => {    
     console.log('createGame');

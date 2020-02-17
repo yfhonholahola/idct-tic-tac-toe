@@ -2,5 +2,7 @@
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
         ".vscode{,/**}"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/e06e0b7f-0f6f-435b-8466-e0ad2f54b700/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/idct-tic-tac-toe-server",
+    "appService.deploySubpath": "server"
 }

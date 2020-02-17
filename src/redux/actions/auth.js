@@ -8,7 +8,7 @@ export const tryAuth = (authData) => {
     let url =
       "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
       API_KEY;
-      NavigationService.navigate('Game')
+      NavigationService.navigate('Menu')
     // fetch(url, {
     //   method: "POST",
     //   body: JSON.stringify({
@@ -29,11 +29,11 @@ export const tryAuth = (authData) => {
     //     console.log(parsedRes);
     //     if (!parsedRes.idToken) {
     //       alert("Authentication failed, please try again!"); 
-    //       parsedRes.reject();         
+    //       //parsedRes.reject();         
     //     } else {
     //       alert("Authentication Succeeded!"); 
     //       dispatch({ type : AUTH_SET_TOKEN, payload: { token: parsedRes.idToken }});
-    //       NavigationService.navigate({routeName: 'Game'})
+    //       NavigationService.navigate('Game')
     //     }
     //   });
   };

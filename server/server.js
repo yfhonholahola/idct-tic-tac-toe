@@ -4,17 +4,20 @@ var cors = require('cors');
 
 var app = express();
 
-// app.use(logger('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cors());
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
-http.listen(process.env.PORT || 3090, function(){
+// app.get('/', function(req, res){
+//     res.send('<h1>Hello world</h1>');
+// });
+
+http.listen(process.env.PORT || 3090, () => {
     console.log(`listening on *:${process.env.PORT || 3000}`);
-    res.sendFile(__dirname + '/index.html');
 });
 
 var players = {},
