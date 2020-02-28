@@ -1,7 +1,8 @@
-import { TRY_AUTH, AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN } from "../actionTypes";
+import { TRY_AUTH, TRY_AUTH_SUCCESS, TRY_AUTH_FAILURE } from "../actionTypes";
 
 const initialState = { 
-  token: '' 
+  token: '',
+  user: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -9,15 +10,17 @@ const reducer = (state = initialState, action) => {
       case TRY_AUTH:
         return {
           ...state,
-        };      
-      case AUTH_SET_TOKEN:
+        };
+      case TRY_AUTH_SUCCESS:
         return {
           ...state,
+          user: action.payload.user,
           token: action.payload.token,
         };
-      case AUTH_REMOVE_TOKEN:
+      case TRY_AUTH_FAILURE:
         return {
           ...state,
+          token: ''
         };
       default:
         return state;

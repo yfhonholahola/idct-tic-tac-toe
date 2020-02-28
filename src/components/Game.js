@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import Board from './Board'
-import { createGame, exitGame, makeMove, resetGame } from "../redux/actions";
+import { exitGame, makeMove, resetGame } from "../redux/actions";
+// import { createGame, exitGame, makeMove, resetGame } from "../redux/actions";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { nestedArrayDeepCopy } from '../utils/CommonUtils'
@@ -16,11 +17,11 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    this.props.createGame();
+    // this.props.createGame();
   }
 
   componentWillUnmount() {
-    this.props.exitGame();
+    //this.props.exitGame();
   }
 
   onMove = (position) => {
@@ -46,9 +47,14 @@ class Game extends Component {
           <Board gameMatrix={this.props.gameMatrix} onMove={(position) => this.onMove(position)} disabled={(!this.props.turn && !this.props.opponent) || this.props.turn !== this.props.symbol || !!this.props.result} />
           {
             !!this.props.result && !!this.props.symbol &&
-            <TouchableOpacity style={styles.buttonContainer} onPress={this.props.resetGame}>
-              <Text style={styles.text}>Reset</Text>
-            </TouchableOpacity>
+            <View>
+              <TouchableOpacity style={styles.buttonContainer} onPress={this.props.resetGame}>
+                <Text style={styles.text}>Reset</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: 'white', borderColor: 'black', borderWidth: 1}]} onPress={this.props.exitGame}>
+                <Text>Exit</Text>
+              </TouchableOpacity>                            
+            </View>
           }
           {!!this.props.result && Alert.alert('Game End', winmsg)}          
         </View>        
@@ -66,7 +72,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    createGame: () => dispatch(createGame()),
     exitGame: () => dispatch(exitGame()),
     makeMove: payload => dispatch(makeMove(payload)),
     resetGame: () => dispatch(resetGame()),
@@ -108,7 +113,7 @@ Game.propTypes = {
   opponent: PropTypes.string,
   turn: PropTypes.string,
   result: PropTypes.string,
-  createGame: PropTypes.func.isRequired,
+  // createGame: PropTypes.func.isRequired,
   exitGame: PropTypes.func.isRequired,
   makeMove: PropTypes.func.isRequired,
   resetGame: PropTypes.func.isRequired,

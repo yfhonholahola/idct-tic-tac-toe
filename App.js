@@ -4,11 +4,12 @@ import { Provider } from 'react-redux'
 import store from './src/redux/store'
 import Navigation from './src/navigation'
 import NavigationService from './src/utils/NavigationService'
+import SocketClient from "./src/socket/client";
 
 class App extends Component {
   render () {
     return (
-      <Provider store={store}>
+      <Provider store={store()}>
         <View style={styles.container}>
           <Navigation ref={navigatorRef => {NavigationService.setTopLevelNavigator(navigatorRef);}} />
         </View>
